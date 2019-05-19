@@ -1,0 +1,41 @@
+p.opt.selected {
+    border-bottom: 5px solid white;
+}
+
+.opt {
+    text-decoration: none;
+}
+
+p.opt {
+    border-bottom: 5px solid transparent;
+}
+
+.game {
+    border: 1px solid black;
+    height: 450px;
+    width: 680px;
+    background-color: black;
+    font-family: okietrailfont, monospace;
+    color: #fff;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+input[type="text"] {
+    background-color: black;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+@font-face {
+    font-family: okietrailfont;
+    src: url(font.ttf);
+}
+
+body {
+    background-color: lightgrey;
+}
