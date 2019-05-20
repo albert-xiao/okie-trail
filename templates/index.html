@@ -1,18 +1,25 @@
 {% extends "base.html" %}
 
+{% import "base.html" as base %}
+
 {% block content %}
-    <h1 class="float-right">Okie Trail</h1>
-    <div class="p-5"></div>
-    <div class="row">
-        <div class="col-6">
-            <img src="{{ url_for('static', filename='imgs/placeholder.jpg') }}" class="img-fluid" alt="">
-        </div>
-        <div class="opt-panel col">
-            <form action="{{ url_for('scene1') }}">
-                <p class="opt submit">New Game</p>
-            </form>
-            <p class="opt">Credits</p>
-        </div>
-        <span class="col-1"></span>
+
+{% set pg %}
+<h1 class="text-right mt-5 mb-4">Okie Trail</h1>
+<div class="row">
+    <div class="col-6">
+        <img src="{{ url_for('static', filename='imgs/placeholder.jpg') }}" class="img-fluid" alt="">
     </div>
+    <div class="opt-panel col">
+        <form action="{{ url_for('scene1') }}">
+            <p class="opt submit">New Game</p>
+        </form>
+        <p class="opt">Credits</p>
+    </div>
+    <span class="col-1"></span>
+</div>
+{% endset %}
+
+{{ base.page(pg, False) }}
+
 {% endblock %}

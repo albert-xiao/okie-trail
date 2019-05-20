@@ -1,34 +1,40 @@
 {% extends "base.html" %}
 
+{% import "base.html" as base %}
+
 {% block content %}
-    <img src="{{ url_for('static', filename='imgs/placeholder.jpg') }}" height="200px" alt="">
-    <div class="row">
-        <form class="col-6" method="post">
-            <p>What are the names?</p>
-            <ol class="opt-panel">
-                {% for i in range(6) %}
-                    <li>
-                        <label class="p-0 m-0">
-                            <input type="text" class="opt" name="name" maxlength="15" autocomplete="off"
-                                   autocapitalize="off" spellcheck="false" required/>
-                        </label>
-                    </li>
-                {% endfor %}
-            </ol>
-            <p class="opt submit">Submit</p>
-        </form>
-        <script>
-            $('form').submit(function () {
-                const inputs = $('form input').toArray();
-                let valid = true;
-                inputs.forEach(function (ins) {
-                    if (!ins.value.match('^[A-Za-z]+[A-Za-z\\s]*$')) {
-                        valid = false;
-                        console.log(ins.value);
-                    }
-                });
-                return valid;
+{% set pg %}
+<img src="{{ url_for('static', filename='imgs/placeholder.jpg') }}" height="200px" alt="">
+<div class="row">
+    <form class="col-6" method="post">
+        <p>What are the names?</p>
+        <ol class="opt-panel">
+            {% for i in range(6) %}
+                <li>
+                    <label class="p-0 m-0">
+                        <input type="text" class="opt" name="name" maxlength="15" autocomplete="off"
+                               autocapitalize="off" spellcheck="false" required/>
+                    </label>
+                </li>
+            {% endfor %}
+        </ol>
+        <p class="opt submit">Submit</p>
+    </form>
+    <script>
+        $('form').submit(function () {
+            const inputs = $('form input').toArray();
+            let valid = true;
+            inputs.forEach(function (ins) {
+                if (!ins.value.match('^[A-Za-z]+[A-Za-z\\s]*$')) {
+                    valid = false;
+                    console.log(ins.value);
+                }
             });
-        </script>
-    </div>
+            return valid;
+        });
+    </script>
+</div>
+{% endset %}
+
+{{ base.page(pg, False) }}
 {% endblock %}

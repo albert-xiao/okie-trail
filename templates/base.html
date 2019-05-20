@@ -5,8 +5,7 @@
     <title>Okie Trail</title>
     <script type="application/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="application/javascript" src="{{ url_for('static', filename='base.js') }}"></script>
-    <script type="application/javascript" src="{{ url_for('static', filename='caret.js') }}"></script>
+    <script type="application/javascript" src="{{ url_for('static', filename='scripts/base.js') }}"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
@@ -15,7 +14,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/caret.css') }}">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/8bit-wonder" type="text/css"/>
+    {% block scripts %}{% endblock %}
 </head>
+
+{% macro navi(class='navi-next') %}
+<div class="row mt-auto">
+    <span class="col"></span>
+    <p class="col opt text-center navi {{ class }}">Continue</p>
+    <span class="col"></span>
+</div>
+{% endmacro %}
+{% macro page(content, hidden=True) %}
+    <div class="page {{ "d-none" if hidden else "" }} h-100">
+        <div class="d-flex flex-column h-100">
+            {{ content }}
+        </div>
+    </div>
+{% endmacro %}
+
 <body class="h-100">
 <div class="container-fluid h-100">
     <div class="py-3"></div>

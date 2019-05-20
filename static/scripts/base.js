@@ -1,6 +1,9 @@
 let selectedIndex;
 let selected;
 
+let pageIndex;
+let page;
+
 function up() {
     if (selectedIndex > 0)
         changeSelected(selectedIndex - 1);
@@ -16,7 +19,7 @@ function changeSelected(newIndex) {
     selected.removeClass('selected');
     selected.blur();
 
-    selected = $($('.opt')[selectedIndex]);
+    selected = $(page.find('.opt')[selectedIndex]);
     selected.addClass('selected');
     selected.focus();
 }
@@ -24,11 +27,30 @@ function changeSelected(newIndex) {
 function enter() {
     if (selected.hasClass('submit'))
         selected.parent().submit();
+    else if (selected.hasClass('navi')) {
+        if (selected.hasClass('navi-next'))
+            changePage(pageIndex + 1);
+        else if (selected.hasClass('navi-prev'))
+            changePage(pageIndex - 1);
+    }
+}
+
+function changePage(newPage) {
+    const pages = $('.page');
+    page.addClass('d-none');
+    pageIndex = newPage;
+    page = $(pages[pageIndex]);
+    page.removeClass('d-none');
+    changeSelected(0);
 }
 
 $(function () {
+    page = $($('.page')[0]);
+    pageIndex = 0;
     selectedIndex = 0;
-    selected = $($('.opt')[0]);
+    selected = $(page.find('.opt')[0]);
+
+    changePage(0);
     changeSelected(0);
 
     $(document).on("keydown", function (e) {
