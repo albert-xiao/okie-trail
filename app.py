@@ -18,3 +18,7 @@ def scene1():
 @app.route('/scene2')
 def scene2():
     return render_template('scene2.html')
+
+
+if __name__ == '__main__':
+    app.run()
