@@ -17,15 +17,17 @@
     {% block scripts %}{% endblock %}
 </head>
 
-{% macro navi(class='navi-next') %}
-<div class="row mt-auto">
-    <span class="col"></span>
-    <p class="col opt text-center navi {{ class }}">Continue</p>
-    <span class="col"></span>
-</div>
+{% macro navi(class='navi-next', text='Continue', navi_page='') %}
+    <div class="row mt-auto">
+        <span class="col"></span>
+        <p class="col opt text-center navi {{ class }}" {{ 'data-navi=' + navi_page if navi_page else '' }}>
+            {{ text }}</p>
+        <span class="col"></span>
+    </div>
 {% endmacro %}
-{% macro page(content, hidden=True) %}
-    <div class="page {{ "d-none" if hidden else "" }} h-100">
+
+{% macro page(content, id='', hidden=True) %}
+    <div class="page {{ "d-none" if hidden else "" }} h-100" {{ 'id=' + id if id else '' }}>
         <div class="d-flex flex-column h-100">
             {{ content }}
         </div>

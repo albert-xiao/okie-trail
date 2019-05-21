@@ -39,3 +39,13 @@ input[type="text"] {
 body {
     background-color: lightgrey;
 }
+
+ul.dashed {
+    list-style: none;
+}
+
+ul.dashed > li::before {
+    content: "-";
+    position: absolute;
+    margin-left: -20px;
+}

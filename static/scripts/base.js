@@ -10,7 +10,7 @@ function up() {
 }
 
 function down() {
-    if (selectedIndex < $('.opt').length - 1)
+    if (selectedIndex < page.find('.opt').length - 1)
         changeSelected(selectedIndex + 1);
 }
 
@@ -32,6 +32,12 @@ function enter() {
             changePage(pageIndex + 1);
         else if (selected.hasClass('navi-prev'))
             changePage(pageIndex - 1);
+        else if (selected.hasClass('navi-page')) {
+            let page = $(`#${selected.attr('data-navi')}`);
+            // get index of the page
+            const index = $('.page').index(page);
+            changePage(index);
+        }
     }
 }
 
