@@ -6,6 +6,14 @@ p.opt.selected {
     text-decoration: none;
 }
 
+.hidden {
+    display: none;
+}
+
+.disabled {
+    text-decoration: line-through;
+}
+
 p.opt {
     border-bottom: 5px solid transparent;
 }

@@ -2,6 +2,9 @@
 
 {% import "base.html" as base %}
 
+{% block scripts %}
+    <script type="application/javascript" src="{{ url_for('static', filename='scripts/scene2.js') }}"></script>
+{% endblock %}
 
 {% block content %}
 {% set intro %}
@@ -42,18 +45,28 @@
         <div class="px-5" style="border-top: 5px solid crimson;">
             <p class="mt-1">Sell</p>
             <ul class="dashed">
-                <li><p class="opt m-0 navi navi-page" data-navi="wagon-sell">3 Mules and Wagon</p></li>
-                <li><p class="opt m-0 navi navi-page" data-navi="farm-equip-sell">Seeder, Plow, and Hoe</p></li>
-                <li><p class="opt m-0 navi navi-page" data-navi="placeholder-sell">Placeholder</p></li>
+                <li>
+                    <p class="opt m-0 navi navi-page" data-navi="wagon-sell" id="enter-wagon-sell">3 Mules and Wagon</p>
+                </li>
+                <li>
+                    <p class="opt m-0 navi navi-page" data-navi="farm-equip-sell" id="enter-farm-equip-sell">
+                        Seeder, Plow, and Hoe</p>
+                </li>
+                <li>
+                    <p class="opt m-0 navi navi-page" data-navi="placeholder-sell" id="enter-placeholder-sell">
+                        Placeholder</p>
+                </li>
             </ul>
         </div>
         <div class="px-5" style="border-top: 5px solid crimson; border-bottom: 5px solid crimson;">
-            <div class="text-right m-0 mt-1">Amount received - $<span>0.00</span></div>
-            <div class="text-right m-0 mb-1">Total money - $<span>0.00</span></div>
+            <div class="text-right m-0 mt-1">Amount received - $<span id="amount-received">0.00</span></div>
+            <div class="text-right m-0 mb-1">Total money - $<span id="amount-total">0.00</span></div>
         </div>
     </div>
 </div>
-{{ base.navi() }}
+<form action="{{ url_for('scene3') }}">
+    <p class="opt submit hidden disabled" id="continue-market">Go to the Dealership</p>
+</form>
 {% endset %}
 
 {% set wagon_sell %}
@@ -68,22 +81,24 @@
 
 {% set wagon_sell_2 %}
 <p>dialogue 2</p>
-{{ base.navi('navi-page', navi_page='shop-home') }}
+{{ base.navi('navi-page', navi_page='shop-home', id='wagon-sold') }}
 {% endset %}
 
 {% set farm_equip_sell %}
 <p>Sell farm equipment</p>
-{{ base.navi('navi-page', navi_page='shop-home') }}
+{{ base.navi('navi-page', navi_page='shop-home', id='farm-equip-sold') }}
 {% endset %}
 
 {% set placeholder_sell %}
 <p>placeholder</p>
-{{ base.navi('navi-page', navi_page='shop-home') }}
+{{ base.navi('navi-page', navi_page='shop-home', id='placeholder-sold') }}
 {% endset %}
+
 
 {{ base.page(intro, hidden=False) }}
 {{ base.page(mattintro) }}
 {{ base.page(shop_home, 'shop-home') }}
+
 
 {{ base.page(wagon_sell, 'wagon-sell') }}
 {{ base.page(wagon_sell_1) }}

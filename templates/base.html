@@ -17,10 +17,11 @@
     {% block scripts %}{% endblock %}
 </head>
 
-{% macro navi(class='navi-next', text='Continue', navi_page='') %}
+{% macro navi(class='navi-next', text='Continue', navi_page='', id='') %}
     <div class="row mt-auto">
         <span class="col"></span>
-        <p class="col opt text-center navi {{ class }}" {{ 'data-navi=' + navi_page if navi_page else '' }}>
+        <p class="col opt text-center navi {{ class }}" {{ 'data-navi=' + navi_page if navi_page else '' }}
+                {{ 'id=' + id if id else '' }}>
             {{ text }}</p>
         <span class="col"></span>
     </div>

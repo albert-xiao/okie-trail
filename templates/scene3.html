@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% import "base.html" as base %}
+
+{% block content %}
+
+{% set dealership %}
+<p>Dealership</p>
+{% endset %}
+
+{{ base.page(dealership, 'dealership') }}
+
+{% endblock %}

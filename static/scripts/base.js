@@ -15,16 +15,24 @@ function down() {
 }
 
 function changeSelected(newIndex) {
-    selectedIndex = newIndex;
-    selected.removeClass('selected');
-    selected.blur();
+    let old = selected;
+    selected = $(page.find('.opt')[newIndex]);
+    if (selected.hasClass('hidden')) {
+        selected = old;
+        return;
+    }
 
-    selected = $(page.find('.opt')[selectedIndex]);
+    old.removeClass('selected');
+    old.blur();
+
+    selectedIndex = newIndex;
     selected.addClass('selected');
     selected.focus();
 }
 
 function enter() {
+    if (selected.hasClass('disabled'))
+        return;
     if (selected.hasClass('submit'))
         selected.parent().submit();
     else if (selected.hasClass('navi')) {
@@ -38,6 +46,7 @@ function enter() {
             const index = $('.page').index(page);
             changePage(index);
         }
+        selected.trigger('navi');
     }
 }
 
@@ -73,7 +82,7 @@ $(function () {
                 enter();
                 e.preventDefault();
                 break;
-            case 9:
+            case 9: // tab
                 e.preventDefault();
                 break;
         }
