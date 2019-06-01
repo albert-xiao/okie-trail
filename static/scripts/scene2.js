@@ -9,12 +9,12 @@ function finishSale() {
 
 $(function () {
     $('#farm-equip-sold').on('navi', function () {
-        amountReceived += 12.40;
+        amountReceived += 19.22;
         $('#enter-farm-equip-sell').addClass('disabled');
         finishSale();
     });
     $('#wagon-sold').on('navi', function () {
-        amountReceived += 19.22;
+        amountReceived += 12.40;
         $('#enter-wagon-sell').addClass('disabled');
         finishSale();
     });

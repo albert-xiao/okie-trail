@@ -57,3 +57,22 @@ ul.dashed > li::before {
     position: absolute;
     margin-left: -20px;
 }
+
+.matt {
+    height: 300px;
+    width: 262px;
+
+    background: url('../imgs/matt-sprites.png') left center;
+    -webkit-background-size: 787px;
+    background-size: 787px;
+    -webkit-animation: play 6s steps(3) infinite;
+    -o-animation: play 6s steps(3) infinite;
+    animation: play 6s steps(3) infinite;
+}
+
+@keyframes play {
+    100% {
+        background-position: -787px;
+    }
+    
+}

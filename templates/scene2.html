@@ -22,7 +22,9 @@
     <p class="col">Hello, I'm Matt. So you're moving out West! There's a few things you might want to do</p>
 </div>
 <div class="row">
-    <img class="col-4" height="250px" src="{{ url_for('static', filename='imgs/placeholder.jpg') }}" alt="matt">
+    <div class="col-3">
+        <div class="matt" style="position: relative; left: -30px; top: -25px;"></div>
+    </div>
     <span class="col-1"></span>
     <ul class="col dashed">
         <li>sell the items you would be leaving</li>
@@ -35,12 +37,14 @@
 
 {% set shop_home %}
 <div class="row">
-    <img class="col-3" height="350px" src="{{ url_for('static', filename='imgs/placeholder.jpg') }}" alt="matt"/>
+    <div class="col-3">
+        <div class="matt" style="position: relative; left: -40px; top: 30px;"></div>
+    </div>
     <div class="col mr-2">
         <div class="px-5" style="border-top: 5px solid crimson;">
             <p class="m-0 mt-1">Matt's Market</p>
             <p class="m-0 mb-2">Sallisaw, Oklahoma</p>
-            <p class="text-right m-1">May 1st, 1933</p>
+            <p class="text-right m-1">May 1st, 1937</p>
         </div>
         <div class="px-5" style="border-top: 5px solid crimson;">
             <p class="mt-1">Sell</p>
@@ -64,23 +68,65 @@
         </div>
     </div>
 </div>
-<form action="{{ url_for('scene3') }}">
+<form action="{{ url_for('scene3') }}" class="text-center mt-auto">
     <p class="opt submit hidden disabled" id="continue-market">Go to the Dealership</p>
 </form>
 {% endset %}
 
 {% set wagon_sell %}
-<p>Sell wagon dialogue</p>
+<div class="row">
+    <div class="col-3">
+        <div class="matt" style="position: relative; left: -40px; top: 30px;"></div>
+    </div>
+    <div class="col">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>Hm...</p>
+        <br>
+        <br>
+        <p>Since I like you, I’ll buy the wagon for a dollar...but the mules, I really don’t see much use for.</p>
+    </div>
+</div>
 {{ base.navi() }}
 {% endset %}
 
 {% set wagon_sell_1 %}
-<p>dialogue 1</p>
+<div class="row">
+    <div class="col-3">
+        <img src="{{ url_for('static', filename='imgs/mule.png') }}" height="350px" alt="mule"
+             style="position: relative; left:-50px;">
+    </div>
+    <div class="col">
+        <br>
+        <br>
+        <br>
+        <p>I paid $30 for that wagon! And the mules, they’re beautiful!</p>
+        <br>
+        <br>
+        <p>The teeth! Deep lungs! Hear their lungs, please!</p>
+    </div>
+</div>
 {{ base.navi() }}
 {% endset %}
 
 {% set wagon_sell_2 %}
-<p>dialogue 2</p>
+<div class="row">
+    <div class="col-3">
+        <div class="matt" style="position: relative; left: -40px; top: 30px;"></div>
+    </div>
+    <div class="col">
+        <br>
+        <p>Okay, okay, calm down. I will add another dollar and 40 cents for the wagon.</p>
+        <br>
+        <br>
+        <p>The mules. I guess I can pay for their weight in dog feed. 10 dollars.</p>
+        <br>
+        <br>
+        <p>So that will be...$12.40.</p>
+    </div>
+</div>
 {{ base.navi('navi-page', navi_page='shop-home', id='wagon-sold') }}
 {% endset %}
 
