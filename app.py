@@ -4,7 +4,6 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-
 names: List[str] = []
 
 
@@ -28,9 +27,16 @@ def scene1():
 def scene2():
     return render_template('scene2.html')
 
+
 @app.route('/scene3')
 def scene3():
     return render_template('scene3.html')
+
+
+@app.route('/scene4')
+def scene4():
+    return render_template('scene4.html')
+
 
 
 if __name__ == '__main__':

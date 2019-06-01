@@ -4,10 +4,59 @@
 
 {% block content %}
 
-{% set dealership %}
-<p>Dealership</p>
+{% set welcome %}
+<div class="d-flex align-items-center flex-column">
+    <div class="matt" style="position: relative; left: 20px; top: -20px;"></div>
+    <p>Big welcome to Matt’s Used Cars!</p>
+</div>
+
+{{ base.navi() }}
 {% endset %}
 
-{{ base.page(dealership, 'dealership') }}
+{% set description %}
+<p>description</p>
+
+{{ base.navi() }}
+{% endset %}
+
+{% set shop %}
+<div class="mx-2">
+    <div class="px-5" style="border-top: 5px solid crimson;">
+        <p class="text-center mt-4">Matt's Used Cars</p>
+    </div>
+    <div class="px-5" style="border-top: 5px solid crimson;">
+        <div class="row text-center mt-2">
+            <div class="col">
+                <img src="{{ url_for('static', filename='imgs/car-placeholder.jpg') }}" width="150px" height="150p"
+                     alt="car1">
+                <p class="opt navi navi-next mt-1">Today's Bargain '29 Ford Pickup</p>
+            </div>
+            <div class="col">
+                <img src="{{ url_for('static', filename='imgs/car-placeholder.jpg') }}" width="150px" height="150p"
+                     alt="car2">
+                <p class="opt navi navi-next mt-1">'36 Pontiac</p>
+            </div>
+            <div class="col">
+                <img src="{{ url_for('static', filename='imgs/car-placeholder.jpg') }}" width="150px" height="150px"
+                     alt="car3">
+                <p class="opt navi navi-next mt-1">Hudson Super 6</p>
+            </div>
+        </div>
+    </div>
+    <div class="px-5" style="border-top: 5px solid crimson">
+    </div>
+</div>
+{% endset %}
+
+{% set temp %}
+<form action="{{ url_for('scene4') }}" class="text-center mt-auto">
+    <p class="opt submit" id="continue-market">Continue</p>
+</form>
+{% endset %}
+
+{{ base.page(welcome) }}
+{{ base.page(description) }}
+{{ base.page(shop) }}
+{{ base.page(temp) }}
 
 {% endblock %}

@@ -70,10 +70,12 @@ $(function () {
 
     $(document).on("keydown", function (e) {
         switch (e.which) {
+            case 37:
             case 38:
                 up();
                 e.preventDefault();
                 break;
+            case 39:
             case 40:
                 down();
                 e.preventDefault();
