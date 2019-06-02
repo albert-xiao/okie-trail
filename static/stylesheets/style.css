@@ -74,5 +74,32 @@ ul.dashed > li::before {
     100% {
         background-position: -787px;
     }
-    
+
+}
+
+.trail {
+    height: 150px;
+    width: 646px;
+
+    background-position: left center;
+    -webkit-background-size: 1200px 150px;
+    background-size: 1200px 150px;
+}
+
+.trail.animate {
+    -webkit-animation: trail-play 6s linear forwards;
+    -o-animation: trail-play 6s linear forwards;
+    animation: trail-play 6s linear forwards;
+    background-position: right center;
+}
+
+.scene5 {
+    background-image: url('../imgs/scene5-placeholder.png');
+}
+
+@keyframes trail-play {
+    100% {
+        background-position: 0;
+    }
+
 }

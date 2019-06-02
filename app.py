@@ -38,6 +38,12 @@ def scene4():
     return render_template('scene4.html')
 
 
+@app.route('/scene5', methods=('GET', 'POST'))
+def scene5():
+    if request.method == 'POST':
+        print(request.form['decision'])
+    return render_template('scene5.html')
+
 
 if __name__ == '__main__':
     app.run()

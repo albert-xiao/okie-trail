@@ -6,6 +6,10 @@
 
 {% set page %}
 <p>Scene 4</p>
+
+<form action="{{ url_for('scene5') }}" class="text-center mt-auto">
+    <p class="opt submit">Continue</p>
+</form>
 {% endset %}
 
 {{ base.page(page) }}
