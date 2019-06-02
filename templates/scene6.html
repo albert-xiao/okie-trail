@@ -1,0 +1,77 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene6' %}
+
+{% block intro_content %}
+    <p>
+        The heat is too much today. {{ state['names'][2] }} keels over on the ground and starts throwing up
+        violently. Water is already low; much water cannot be spared for her.
+    </p>
+    <p>
+        You take a detour to the nearest hospital and hope for the best.
+    </p>
+{% endblock %}
+
+{% block intro_footer %}
+    {{ base.navi(class='navi-next traveling hidden') }}
+{% endblock %}
+
+
+{% block content %}
+{{ super() }}
+
+{% set hospital1 %}
+<p>
+    You are let into the hospital, the heat still shining down on now unconscious {{ state['names'][2] }}. The hospital
+    agrees to take you as soon as they have space. You sit down to a waiting room, trying to
+    keep {{ state['names'][2] }} cool.
+</p>
+{% endset %}
+
+{% set hospital2 %}
+<p>
+    A desperate family rushes in, an unconscious person in their arms, and is immediately let into an operating room.
+</p>
+<p>You are furious.</p>
+{% endset %}
+
+{% set dlg1 %}
+<p>Excuse me? We have been patiently waiting and that family was immediately taken care of. Can we have a space
+    soon?</p>
+{% endset %}
+
+{% set dlg2 %}
+<p>We said we will take you when we have space for you, so please sit down and wait patiently.</p>
+{% endset %}
+
+{% set dlg3 %}
+<p>You seemed to have enough space for him, why can’t I have some space? {{ state['names'][2] }} is about to die!</p>
+{% endset %}
+
+{% set dlg4 %}
+<p>I’m not going to tell you again, Okie trash! Sit down!</p>
+{% endset %}
+
+{% set end %}
+<p>{{ state['names'][2] }} dies in your arms that night. You never got a chance to see a doctor. </p>
+<p>You continue on your journey, one person less.</p>
+{% endset %}
+
+{% set end_footer %}
+<form action="{{ url_for('scene7') }}">
+    <p class="opt submit text-center">Continue</p>
+</form>
+{% endset %}
+
+{{ trail.tpage(hospital1, trail_class, base.navi()) }}
+{{ trail.tpage(hospital2, trail_class, base.navi()) }}
+{{ trail.tpage(dlg1, trail_class, base.navi()) }}
+{{ trail.tpage(dlg2, trail_class, base.navi()) }}
+{{ trail.tpage(dlg3, trail_class, base.navi()) }}
+{{ trail.tpage(dlg4, trail_class, base.navi()) }}
+{{ trail.tpage(end, trail_class, end_footer) }}
+
+{% endblock %}

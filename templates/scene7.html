@@ -1,0 +1,20 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene7' %}
+
+{% block intro_content %}
+    <p>
+        Scene 7.
+    </p>
+{% endblock %}
+
+{% block intro_footer %}
+    {{ base.navi(class='navi-next traveling hidden') }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+{% endblock %}

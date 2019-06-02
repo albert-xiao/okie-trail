@@ -97,9 +97,12 @@ ul.dashed > li::before {
     background-image: url('../imgs/scene5-placeholder.png');
 }
 
+.scene6 {
+    background-image: url('../imgs/scene6-placeholder.png');
+}
+
 @keyframes trail-play {
     100% {
         background-position: 0;
     }
-
 }

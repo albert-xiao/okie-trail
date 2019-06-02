@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-names: List[str] = []
+state = {'names': [], 'money': 0}
 
 
 @app.route('/')
@@ -15,10 +15,9 @@ def home():
 @app.route('/scene1', methods=('GET', 'POST'))
 def scene1():
     if request.method == 'POST':
-        nms = request.form.getlist('name')
-        if len(nms) == 5:
-            global names
-            names = nms
+        names = request.form.getlist('name')
+        if len(names) == 5:
+            state['names'] = names
             return redirect('scene2')
     return render_template('scene1.html')
 
@@ -42,7 +41,18 @@ def scene4():
 def scene5():
     if request.method == 'POST':
         print(request.form['decision'])
+        return redirect('scene6')
     return render_template('scene5.html')
+
+
+@app.route('/scene6')
+def scene6():
+    return render_template('scene6.html', state=state)
+
+
+@app.route('/scene7')
+def scene7():
+    return render_template('scene7.html')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% import "base.html" as base %}
+
+{% block scripts %}
+    <script type="application/javascript" src="{{ url_for('static', filename='scripts/trail.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+{% set intro %}
+<div class="trail {{ trail_class }} animate"></div>
+<br>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col">
+        <p class="traveling">Traveling...</p>
+    </div>
+</div>
+<div class="row traveling hidden">
+    <div class="col-1"></div>
+    <div class="col-10">
+        {% block intro_content %}
+        {% endblock %}
+    </div>
+</div>
+{% block intro_footer %}
+{% endblock %}
+{% endset %}
+
+{{ base.page(intro) }}
+
+{% endblock %}
+
+{% macro tpage(content, trail_class, footer='', id='', hidden=True) %}
+{% set inner %}
+<div class="trail {{ trail_class }}"></div>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <br>
+        {{ content }}
+    </div>
+</div>
+{{ footer }}
+{% endset %}
+
+{{ base.page(inner, id, hidden) }}
+{% endmacro %}
+

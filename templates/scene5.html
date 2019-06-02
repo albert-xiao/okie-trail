@@ -1,187 +1,108 @@
-{% extends "base.html" %}
+{% extends "trail.html" %}
 
 {% import "base.html" as base %}
+{% import "trail.html" as trail %}
 
-{% block scripts %}
-    <script type="application/javascript" src="{{ url_for('static', filename='scripts/scene5.js') }}"></script>
+{% set trail_class = 'scene5' %}
+
+{% block intro_content %}
+    <p>While you’re blazing down Route 66, you see a family on the side of the road, frantically waving at you.</p>
+    <p>They look like fellow Okies, so you decide to check it out.</p>
+{% endblock %}
+
+{% block intro_footer %}
+    {{ base.navi(class='navi-next traveling hidden') }}
 {% endblock %}
 
 {% block content %}
 
-{% set intro %}
-<div class="trail scene5 animate"></div>
-<br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col">
-        <p class="traveling">Traveling...</p>
-    </div>
-</div>
-<div class="row traveling hidden">
-    <div class="col-1"></div>
-    <div class="col-9">
-        <p>While you’re blazing down Route 66, you see a family on the side of the road, frantically waving at you.</p>
-        <p>They look like fellow Okies, so you decide to check it out.</p>
-    </div>
-</div>
-{{ base.navi(class='navi-next traveling hidden') }}
-{% endset %}
+{{ super() }}
 
 {% set dlg1 %}
-<div class="trail scene5"></div>
-<br>
-<div class="row traveling hidden">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            Oh thank heavens you came for us!
-        </p>
-        <p>
-            We’re the Ritchkeys family and we’re trying to make a decent living
-            in California, but our car broke down and we really have no way to get out of this desert.
-        </p>
-    </div>
-</div>
+<p>
+    Oh thank heavens you came for us!
+</p>
+<p>
+    We’re the Ritchkeys family and we’re trying to make a decent living
+    in California, but our car broke down and we really have no way to get out of this desert.
+</p>
+{% endset %}
+
+{% set navi_next %}
 {{ base.navi() }}
 {% endset %}
 
 {% set dlg2 %}
-<div class="trail scene5"></div>
-<br>
-<div class="row traveling hidden">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            Anything would help! I don’t suppose we’d have much time until we die...
-        </p>
-    </div>
-</div>
-{{ base.navi() }}
+<p>
+    Anything would help! I don’t suppose we’d have much time until we die...
+</p>
 {% endset %}
 
 {% set dlg3 %}
-<div class="trail scene5"></div>
+<p>Hm...I guess we might be able to help.</p>
 <br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>Hm...I guess we might be able to help.</p>
-        <br>
-        <p class="opt navi navi-page" data-navi="ride">Allow them to ride with you</p>
-        <p class="opt navi navi-page" data-navi="five">Give them $5.00 and go on your way</p>
-        <p class="opt navi navi-page" data-navi="no">Tell them you can't help</p>
-    </div>
-</div>
+<p class="opt navi navi-page" data-navi="ride">Allow them to ride with you</p>
+<p class="opt navi navi-page" data-navi="five">Give them $5.00 and go on your way</p>
+<p class="opt navi navi-page" data-navi="no">Tell them you can't help</p>
 {% endset %}
 
 {% set ride %}
-<div class="trail scene5"></div>
-<br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            You decide to help them. How could you let them die? Space is limited right now, but there’s always room for
-            more. You let the family in your car, sharing all their food and money.
-        </p>
-    </div>
-</div>
-{{ base.navi() }}
+<p>
+    You decide to help them. How could you let them die? Space is limited right now, but there’s always room for
+    more. You let the family in your car, sharing all their food and money.
+</p>
 {% endset %}
 
 {% set ride1 %}
-<div class="trail scene5"></div>
-<br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            + $12.00
-        </p>
-    </div>
-</div>
-<form action="{{ url_for('scene5') }}" method="POST">
-    <input name="decision" type="hidden" value="0">
-    <p class="opt submit text-center">Continue</p>
-</form>
+<p>
+    + $12.00
+</p>
 {% endset %}
 
+{% macro decide(value) %}
+    <form action="{{ url_for('scene5') }}" method="POST">
+        <input name="decision" type="hidden" value="{{ value }}">
+        <p class="opt submit text-center">Continue</p>
+    </form>
+{% endmacro %}
+
 {% set five %}
-<div class="trail scene5"></div>
-<br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            You know it's not much, but it is better than doing nothing to help the Ritchkeys. You go on your way.
-        </p>
-    </div>
-</div>
-{{ base.navi() }}
+<p>
+    You know it's not much, but it is better than doing nothing to help the Ritchkeys. You go on your way.
+</p>
 {% endset %}
 
 {% set five1 %}
-<div class="trail scene5"></div>
-<br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            - $5.00
-        </p>
-    </div>
-</div>
-<form action="{{ url_for('scene5') }}" method="POST">
-    <input name="decision" type="hidden" value="1">
-    <p class="opt submit text-center">Continue</p>
-</form>
+<p>
+    - $5.00
+</p>
 {% endset %}
 
 {% set no %}
-<div class="trail scene5"></div>
-<br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            The scene looks bad, but there’s no way you could take care of them, you can barely even take care of
-            yourself! You apologize, and they understand. Times are tough for everyone, and it would be a miracle if
-            anybody helped them.
-        </p>
-    </div>
-</div>
-{{ base.navi() }}
+<p>
+    The scene looks bad, but there’s no way you could take care of them, you can barely even take care of
+    yourself! You apologize, and they understand. Times are tough for everyone, and it would be a miracle if
+    anybody helped them.
+</p>
 {% endset %}
 
 {% set no1 %}
-<div class="trail scene5"></div>
-<br>
-<div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <p>
-            They curl back up on the ground under the shade of their car.
-        </p>
-    </div>
-</div>
-<form action="{{ url_for('scene5') }}" method="POST">
-    <input name="decision" type="hidden" value="2">
-    <p class="opt submit text-center">Continue</p>
-</form>
+<p>
+    They curl back up on the ground under the shade of their car.
+</p>
 {% endset %}
 
-{{ base.page(intro) }}
-{{ base.page(dlg1) }}
-{{ base.page(dlg2) }}
-{{ base.page(dlg3) }}
+{{ trail.tpage(dlg1, trail_class, navi_next) }}
+{{ trail.tpage(dlg2, trail_class, navi_next) }}
+{{ trail.tpage(dlg3, trail_class) }}
 
-{{ base.page(ride, id='ride') }}
-{{ base.page(ride1) }}
+{{ trail.tpage(ride, trail_class, navi_next, id='ride') }}
+{{ trail.tpage(ride1, trail_class, decide(0)) }}
 
-{{ base.page(five, id='five') }}
-{{ base.page(five1) }}
+{{ trail.tpage(five, trail_class, navi_next, id='five') }}
+{{ trail.tpage(five1, trail_class, decide(1)) }}
 
-{{ base.page(no, id='no') }}
-{{ base.page(no1) }}
+{{ trail.tpage(no, trail_class, navi_next, id='no') }}
+{{ trail.tpage(no1, trail_class, decide(2)) }}
 
 {% endblock %}
