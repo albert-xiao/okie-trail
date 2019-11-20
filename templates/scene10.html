@@ -1,0 +1,34 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene10' %}
+
+{% block content %}
+
+{% set intro %}
+<p>You drive for miles until you pass into a small town.</p>
+{% endset %}
+
+{% set desc1 %}
+<p>You pull up into a collection of ragtag tents and newspaper shelters. This will be your home for the next couple of
+    weeks, assuming the work you’re doing now will pay enough to support your family. </p>
+{% endset %}
+
+{% set desc2 %}
+<p>The residents of this Hooverville are polite, but curt. No words are mean, but no words wasted. Ironically, in the
+    lowest of the lows, the crummiest of places, the people are the nicest, the most caring, and the most humane.</p>
+{% endset %}
+
+{% set footer %}
+<form action="{{ url_for('scene11') }}">
+    <p class="opt text-center submit">Continue</p>
+</form>
+{% endset %}
+
+{{ trail.tpage(intro, trail_class, base.navi()) }}
+{{ trail.tpage(desc1, 'hooverville', base.navi()) }}
+{{ trail.tpage(desc2, 'hooverville', footer) }}
+
+{% endblock %}

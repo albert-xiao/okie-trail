@@ -12,7 +12,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/caret.css') }}">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/8bit-wonder" type="text/css"/>
     {% block scripts %}{% endblock %}
 </head>
@@ -34,6 +33,12 @@
         </div>
     </div>
 {% endmacro %}
+
+{% set endfooter %}
+<form action="{{ url_for('end') }}">
+    <p class="text-center opt submit">Continue</p>
+</form>
+{% endset %}
 
 <body class="h-100">
 <div class="container-fluid h-100">

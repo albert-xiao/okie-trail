@@ -1,0 +1,78 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene10' %}
+
+{% block content %}
+
+{% set intro1 %}
+<p>Word spreads around quickly. Soon there is a riot that spreads through the Hooverville. The next night, a large crowd
+    is outside on the field, brandishing pitchforks and torches. </p>
+{% endset %}
+
+{% set intro2 %}
+<p>A line of policemen stare back at them, hands on their holsters and eyes on the crowd. </p>
+{% endset %}
+
+{% set shoot %}
+<p>Amongst the yelling, a shot rings out. Immediately everyone runs away, screaming and weaving as the policemen
+    continued to shoot, some falling on the ground, injured or even worse, dead.</p>
+<p>You make your retreat into some nearby bushes.</p>
+{% endset %}
+
+{% set decision %}
+<p>You have a crucial decision to make.</p>
+<p class="opt navi navi-page" data-navi="join">Join the rioters</p>
+<p class="opt navi navi-page" data-navi="keep">Keep to the outskirts</p>
+{% endset %}
+
+{% set join1 %}
+<p>You cannot believe the police.</p>
+<p>With the police shooting your son and the innocent and kind people of the Hooverville, you have to make a stand.</p>
+{% endset %}
+
+{% set join2 %}
+<p>The next day, you organize another riot.</p>
+<p>However, things quickly go south.</p>
+{% endset %}
+
+{% set join3 %}
+<p>The police come with reinforcements this time. They use guns, gas, and hoses to put you and the rioters down.</p>
+<p>You are quickly identified as an organizer and you and your family are arrested and placed in jail.</p>
+{% endset %}
+
+{% set join4 %}
+<p>You don't know what's going to happen, but justice is certainly not being served.</p>
+{% endset %}
+
+{% set keep1 %}
+<p>Despite your tremendous anger toward the police, participating in the riot is a risk to yourself——and more
+    importantly, your family.</p>
+{% endset %}
+
+{% set keep2 %}
+<p>You wait patiently in the shadows, hoping you will not be the police's next target.</p>
+{% endset %}
+
+{% set footer %}
+<form action="{{ url_for('scene13') }}">
+    <p class="opt text-center submit">Continue</p>
+</form>
+{% endset %}
+
+{{ trail.tpage(intro1, trail_class, base.navi()) }}
+{{ trail.tpage(intro2, trail_class, base.navi()) }}
+{{ trail.tpage(shoot, trail_class, base.navi()) }}
+{{ trail.tpage(decision, trail_class) }}
+
+{{ trail.tpage(join1, trail_class, base.navi(), id='join') }}
+{{ trail.tpage(join2, trail_class, base.navi()) }}
+{{ trail.tpage(join3, trail_class, base.navi()) }}
+{{ trail.tpage(join4, trail_class, base.endfooter) }}
+
+{{ trail.tpage(keep1, trail_class, base.navi(), id='keep') }}
+{{ trail.tpage(keep2, trail_class, footer) }}
+
+{% endblock %}

@@ -79,30 +79,97 @@ ul.dashed > li::before {
 
 .trail {
     height: 150px;
-    width: 646px;
+    width: 113px;
 
-    background-position: left center;
-    -webkit-background-size: 1200px 150px;
-    background-size: 1200px 150px;
+    background-image: url('../imgs/traveling.png');
+
+    -webkit-background-size: 400px 150px;
+    background-size: 400px 150px;
 }
 
 .trail.animate {
-    -webkit-animation: trail-play 6s linear forwards;
-    -o-animation: trail-play 6s linear forwards;
-    animation: trail-play 6s linear forwards;
-    background-position: right center;
+    background-position: left center;
+    width: 200px;
+
+    -webkit-background-size: 400px 150px;
+    background-size: 400px 150px;
+
+    -webkit-animation: trail-play 1s steps(2) 4;
+    -o-animation: trail-play 1s steps(2) 4;
+    animation: trail-play 1s steps(2) 4;
 }
 
-.scene5 {
-    background-image: url('../imgs/scene5-placeholder.png');
+.dies {
+    background-image: url('../imgs/dies.PNG');
+
+    -webkit-background-size: 113px 150px;
+    background-size: 113px 150px;
 }
 
-.scene6 {
-    background-image: url('../imgs/scene6-placeholder.png');
+.sickwife {
+    background-image: url('../imgs/sick_wife_sprites.png');
+
+    -webkit-background-size: 450px 150px;
+    background-size: 450px 150px;
+
+    -webkit-animation: sickwife-play 6s steps(4) infinite;
+    -o-animation: sickwife-play 6s steps(4) infinite;
+    animation: sickwife-play 6s steps(4) infinite;
 }
+
+.cali {
+    background-image: url('../imgs/cali.png');
+    width: 200px;
+    -webkit-background-size: 200px 150px;
+    background-size: 200px 150px;
+}
+
+.choices {
+    background-image: url('../imgs/choices.png');
+    width: 226px;
+}
+
+.hooverville {
+    background-image: url('../imgs/hoovervile.PNG');
+    width: 113px;
+
+    -webkit-background-size: 113px 150px;
+    background-size: 113px 150px;
+}
+
+.police {
+    background-image: url('../imgs/police1.PNG');
+    width: 113px;
+
+    -webkit-background-size: 113px 150px;
+    background-size: 113px 150px;
+}
+
+.policegun {
+    background-image: url('../imgs/police2.PNG');
+    width: 113px;
+
+    -webkit-background-size: 113px 150px;
+    background-size: 113px 150px;
+}
+
+.youtalk {
+    background-image: url('../imgs/youtalk.PNG');
+    width: 113px;
+
+    -webkit-background-size: 113px 150px;
+    background-size: 113px 150px;
+}
+
+@keyframes sickwife-play {
+    100% {
+        background-position: -450px;
+    }
+}
+
 
 @keyframes trail-play {
     100% {
-        background-position: 0;
+        background-position: -400px;
     }
 }

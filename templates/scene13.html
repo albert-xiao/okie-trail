@@ -1,0 +1,30 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene10' %}
+
+{% block content %}
+
+{% set intro %}
+<p>The whole day, whispers come up among the many workers. There is talk that the Hooverville was ordered to burn up
+    that night to disperse all the rioters.</p>
+{% endset %}
+
+{% set desc %}
+<p>Even though your job is necessary for your survival, you have no choice but to pack up at night and leave.</p>
+<p>Sure enough, as you drive away you smell the smoke as newspapers and leaves burn in the night air.</p>
+{% endset %}
+
+{% set footer %}
+<form action="{{ url_for('scene14') }}">
+    <p class="opt text-center submit">Continue</p>
+</form>
+{% endset %}
+
+{{ trail.tpage(intro, trail_class, base.navi()) }}
+{{ trail.tpage(desc, trail_class, base.navi()) }}
+{{ trail.tpage(desc, trail_class, footer) }}
+
+{% endblock %}

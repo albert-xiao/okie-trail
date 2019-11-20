@@ -1,0 +1,77 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene10' %}
+
+{% block content %}
+
+{% set intro %}
+<p>After a long day of working out in the fields, your family collapses for the night, dead tired. They expect a long
+    day of hard work greeting them when they wake up. What they don't expect, though, are the bright, shining lights in
+    their face to greet them in the middle of the night.</p>
+{% endset %}
+
+{% set dlg1 %}
+<p>Give us your son, now.</p>
+{% endset %}
+
+{% set dlg2 %}
+<p>What’d he do wrong?</p>
+{% endset %}
+
+{% set dlg3 %}
+<p>We have reason to believe that your son has committed a crime. We need to take him out for questioning.</p>
+{% endset %}
+
+{% set dlg4 %}
+<p>No! What could my son have possibly done! We’ve only been here one week!</p>
+{% endset %}
+
+{% set dlg5 %}
+<p>He’s been stealing some of the crops he’s been picking. Just give him to me Okie!</p>
+{% endset %}
+
+{% set pull %}
+<p>The policeman pulls out a gun and snarls menacingly.</p>
+{% endset %}
+
+{% set dlg6 %}
+<p>Believe me, I don’t want to do this.</p>
+{% endset %}
+
+{% set dlg7 %}
+<p>Don’t shoot! Don’t shoot! Run!</p>
+{% endset %}
+
+{% set shoot1 %}
+<p>{{ state['names'][2] }} starts running through the back door, pushing and shoving everything out of the way. The
+    police officer cocks his gun and fires blindly.</p>
+{% endset %}
+
+{% set shoot2 %}
+<p>{{ state['names'][2] }} pauses, then crumples onto the ground, completely dead.</p>
+<p>The entire family falls to their knees in tears, but the officer doesn't care. He takes a good look at the boy
+    swimming in a pool of blood, shrugs, and walks away.</p>
+{% endset %}
+
+{% set footer %}
+<form action="{{ url_for('scene12') }}">
+    <p class="opt text-center submit">Continue</p>
+</form>
+{% endset %}
+
+{{ trail.tpage(intro, trail_class, base.navi()) }}
+{{ trail.tpage(dlg1, 'police', base.navi()) }}
+{{ trail.tpage(dlg2, 'youtalk', base.navi()) }}
+{{ trail.tpage(dlg3, 'police', base.navi()) }}
+{{ trail.tpage(dlg4, 'youtalk', base.navi()) }}
+{{ trail.tpage(dlg5, 'police', base.navi()) }}
+{{ trail.tpage(pull, 'policegun', base.navi()) }}
+{{ trail.tpage(dlg6, 'policegun', base.navi()) }}
+{{ trail.tpage(dlg7, 'youtalk', base.navi()) }}
+{{ trail.tpage(shoot1, 'policegun', base.navi()) }}
+{{ trail.tpage(shoot2, 'dies', footer) }}
+
+{% endblock %}

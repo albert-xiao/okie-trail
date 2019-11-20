@@ -1,0 +1,47 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene7' %}
+
+{% block intro_content %}
+    <p>One disgustingly hot day, you finally pass a sign that says “Welcome to California!”.</p>
+{% endblock %}
+
+{% block intro_footer %}
+    {{ base.navi(class='navi-next traveling hidden') }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+
+{% set intro2 %}
+<p>In California, the opportunities are endless. There are signs everywhere telling people to work.
+    “Cotton pickers needed, 500 workers needed”, one sign reads. “Grapes, lots of workers needed”, says another. You are
+    faced with a decision for the family. Which one do you choose?
+</p>
+{% endset %}
+
+{% set decision %}
+<p class="opt navi navi-page" data-navi="pick">Pick cotton: need 500 people: wages very low</p>
+<p class="opt navi navi-page" data-navi="pick">Pick grapes: need 250 people: wages 30 cents/day</p>
+{% endset %}
+
+{% set pick %}
+<p>When you reach the picking camp, it is already full. The owners agree that you can work, but you would need to find
+    housing elsewhere.</p>
+<p>You drive to the local town, hoping to find some shelter there.</p>
+{% endset %}
+
+{% set footer %}
+<form action="{{ url_for('scene10') }}">
+    <p class="opt text-center submit">Continue</p>
+</form>
+{% endset %}
+
+{{ trail.tpage(intro2, 'cali', base.navi()) }}
+{{ trail.tpage(decision, 'choices') }}
+{{ trail.tpage(pick, 'choices', footer, id='pick') }}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "trail.html" %}
+
+{% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene10' %}
+
+{% block content %}
+
+{% set intro %}
+<p>Day after day, you search, but everywhere, there are no jobs.</p>
+{% endset %}
+
+{% set desc1 %}
+<p>You ran out of food a week ago. One by one, your family falls.</p>
+{% endset %}
+
+{% set desc2 %}
+<p>Soon enough, you have nothing left. No money, no food, no family.</p>
+{% endset %}
+
+{% set desc3 %}
+<p>Why is life worth living at this point?</p>
+<p>Do you want to live, day by day, scrounging for scraps and begging to pick crops? </p>
+<p>No you don’t. You can’t continue.</p>
+{% endset %}
+
+{% set end %}
+<p>You decide to end it all.</p>
+{% endset %}
+
+{{ trail.tpage(intro, trail_class, base.navi()) }}
+{{ trail.tpage(desc1, trail_class, base.navi()) }}
+{{ trail.tpage(desc2, trail_class, base.navi()) }}
+{{ trail.tpage(desc3, trail_class, base.navi()) }}
+{{ trail.tpage(end, trail_class, base.endfooter) }}
+
+{% endblock %}

@@ -6,9 +6,7 @@
 {% set trail_class = 'scene7' %}
 
 {% block intro_content %}
-    <p>
-        Scene 7.
-    </p>
+    <p>You noticed her pale demeanor from the beginning, and what you suspected is finally happening.</p>
 {% endblock %}
 
 {% block intro_footer %}
@@ -17,4 +15,52 @@
 
 {% block content %}
 {{ super() }}
+
+{% set intro2 %}
+<p>Mrs. Ritchkeys is terribly ill. She is frail and cannot continue the journey. Mr. Ritchkeys opts to stay with
+    his wife, but he tells you to go on.</p>
+<p>However, you are conflicted in your decision.</p>
+{% endset %}
+
+{% set decision %}
+<p class="opt navi navi-page" data-navi="stay">Stay with the Ritchkeys</p>
+<p class="opt navi navi-page" data-navi="part">Part with the Ritchkeys</p>
+{% endset %}
+
+{% set stay1 %}
+<p>Right here is good enough. You don't need California—</p>
+<p>—That is what you first think.</p>
+{% endset %}
+
+{% set stay2 %}
+<p>After a week with the Ritchkeys, you realize your decision was ill-chosen. There is nothing, just dust
+    everywhere.</p>
+<p>By the time you realize this, it is too late. The fuel tank had been leaking, and now the car will not start.</p>
+{% endset %}
+
+{% set stay3 %}
+<p>You hope to survive long enough for help, but succumbing to the forces of nature is the most probable outcome.</p>
+{% endset %}
+
+{% set part %}
+<p>You heard Mr. Ritchkeys. He said to go and pursue your dream.</p>
+<p>As you take another look at the man and his wife, you shed a tear, but you know it is time to go.</p>
+{% endset %}
+
+{% set footer %}
+<form action="{{ url_for('scene7') }}" method="POST">
+    <p class="opt text-center submit">Continue</p>
+</form>
+{% endset %}
+
+{{ trail.tpage(intro2, 'sickwife', base.navi()) }}
+{{ trail.tpage(decision, 'sickwife') }}
+
+{{ trail.tpage(stay1, 'sickwife', base.navi(), id='stay') }}
+{{ trail.tpage(stay2, trail_class, base.navi()) }}
+{{ trail.tpage(stay3, trail_class, base.endfooter) }}
+
+{{ trail.tpage(part, trail_class, footer, id='part') }}
+
+
 {% endblock %}

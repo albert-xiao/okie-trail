@@ -1,17 +1,157 @@
-{% extends "base.html" %}
+{% extends "trail.html" %}
 
 {% import "base.html" as base %}
+{% import "trail.html" as trail %}
+
+{% set trail_class = 'scene4' %}
 
 {% block content %}
 
-{% set page %}
-<p>Scene 4</p>
+{% set intro %}
+<p class="opt navi navi-page" data-navi="continue">Continue on the Trail</p>
+<p class="opt navi navi-page" data-navi="supplies">Check Supplies</p>
+<p class="opt navi navi-page" data-navi="party">Check Party</p>
+{% endset %}
 
-<form action="{{ url_for('scene5') }}" class="text-center mt-auto">
-    <p class="opt submit">Continue</p>
+{% set supplies %}
+<br>
+<br>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col">
+        <p>You have this much money in total:</p>
+        <p class="pl-5">{{ "$%.2f"|format(state['money']) }}</p>
+        <p>You have this many pounds of food:</p>
+        <p class="pl-5">{{ state['food'] }}</p>
+    </div>
+</div>
+
+{{ base.navi('navi navi-page', navi_page='intro') }}
+{% endset %}
+
+{% set party %}
+<br>
+<br>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col">
+        <p>There are {{ state['names']|length }} people in your party:</p>
+        <ul class="dashed">
+            {% for name in state['names'] %}
+                <li>{{ name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{{ base.navi('navi navi-page', navi_page='intro') }}
+{% endset %}
+
+{% set continue %}
+<span id="continue-trigger"></span>
+<p class="traveling">Traveling...</p>
+<div class="traveling hidden">
+    <p class="opt navi navi-page" data-navi="s{{ scenario }}">Continue</p>
+</div>
+<script>
+    $('#continue-trigger').show(function () {
+        $('.{{ trail_class }}.trail').last().addClass('animate');
+    });
+</script>
+{% endset %}
+
+{% set s0 %}
+<p>Nothing eventful has happened.</p>
+{% endset %}
+
+{% set s1 %}
+<p>You have traveled far since you last got gas. You pull up to a local station and fill up.</p>
+<p>You spend some time filling up your tank.</p>
+{% endset %}
+
+{% set s1_2 %}
+<p>- $2.50</p>
+{% endset %}
+
+{% set s2 %}
+<p>The car sputtered. Putt putt putt, the wheels slowed and then come to a grinding halt. You are in the middle of the
+    desert, with no water anywhere except for your half-filled canteen. The car dealer was a cheat, a lie. This car
+    can’t take you all the way to California.</p>
+{% endset %}
+
+{% set s2_2 %}
+<p>You have no choice but to hope for a passing family to pick you up, but your chances are slim.</p>
+<p>You sigh as you try turning the engine one last time.</p>
+{% endset %}
+
+{% set s3 %}
+<p>While you wait at a rest stop to fill up gas, a glint on the sunbaked earth catches your eye. A whole silver quarter
+    falls upon your gaze, with George Washington smiling back up at you. You can’t believe your luck.</p>
+<p>With a quick look around you, you bend down and swipe up the quarter, a grin on your face.</p>
+{% endset %}
+
+{% set s3_2 %}
+<p>+ $0.25</p>
+{% endset %}
+
+{% set s4 %}
+<p>It seems that some of your money has disappeared...</p>
+<p>You suspect it has been turning into a drink or two, but you decide to let it go.</p>
+{% endset %}
+
+{% set s4_2 %}
+<p>- $2.00</p>
+{% endset %}
+
+{% set s5 %}
+<p>Some of the food has become so rotten and entrapped so much dust that even {{ state['names'][0] }} refuses to eat
+    it.</p>
+<p>You have no choice but to throw it on the road.</p>
+{% endset %}
+
+{% set s5_2 %}
+<p>- 12 lbs food</p>
+{% endset %}
+
+{% set s6 %}
+<p>As you stop to rest from another long day of driving, you hear the voice of a groundskeeper. He orders you to give
+    him 50 cents for your stay.</p>
+<p>You try to argue with him, but you have no choice but to give him the 50 cents.</p>
+{% endset %}
+
+{% set s6_2 %}
+<p>- $0.50</p>
+{% endset %}
+
+{% set footer %}
+<form action="{{ url_for('scene4') }}" method="POST">
+    <p class="text-center opt submit">Continue</p>
 </form>
 {% endset %}
 
-{{ base.page(page) }}
+{{ trail.tpage(intro, trail_class, id='intro') }}
+
+{{ trail.tpage(continue, trail_class, id='continue') }}
+{{ base.page(supplies, id='supplies') }}
+{{ base.page(party, id='party') }}
+
+{{ trail.tpage(s0, trail_class, footer, id='s0') }}
+
+{{ trail.tpage(s1, trail_class, base.navi(), id='s1') }}
+{{ trail.tpage(s1_2, trail_class, footer) }}
+
+{{ trail.tpage(s2, trail_class, base.navi(), id='s2') }}
+{{ trail.tpage(s2_2, trail_class, base.endfooter) }}
+
+{{ trail.tpage(s3, trail_class, base.navi(), id='s3') }}
+{{ trail.tpage(s3_2, trail_class, footer) }}
+
+{{ trail.tpage(s4, trail_class, base.navi(), id='s4') }}
+{{ trail.tpage(s4_2, trail_class, footer) }}
+
+{{ trail.tpage(s5, trail_class, base.navi(), id='s5') }}
+{{ trail.tpage(s5_2, trail_class, footer) }}
+
+{{ trail.tpage(s6, trail_class, base.navi(), id='s6') }}
+{{ trail.tpage(s6_2, trail_class, footer) }}
 
 {% endblock %}

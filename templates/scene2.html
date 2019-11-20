@@ -56,15 +56,11 @@
                     <p class="opt m-0 navi navi-page" data-navi="farm-equip-sell" id="enter-farm-equip-sell">
                         Seeder, Plow, and Hoe</p>
                 </li>
-                <li>
-                    <p class="opt m-0 navi navi-page" data-navi="placeholder-sell" id="enter-placeholder-sell">
-                        Placeholder</p>
-                </li>
             </ul>
         </div>
         <div class="px-5" style="border-top: 5px solid crimson; border-bottom: 5px solid crimson;">
             <div class="text-right m-0 mt-1">Amount received - $<span id="amount-received">0.00</span></div>
-            <div class="text-right m-0 mb-1">Total money - $<span id="amount-total">0.00</span></div>
+            <div class="text-right m-0 mb-1">Total money - $<span id="amount-total">57.40</span></div>
         </div>
     </div>
 </div>
@@ -131,27 +127,62 @@
 {% endset %}
 
 {% set farm_equip_sell %}
-<p>Sell farm equipment</p>
+<div class="row">
+    <div class="col-3">
+        <div class="matt" style="position: relative; left: -40px; top: 30px;"></div>
+    </div>
+    <div class="col">
+        <br>
+        <p>This equipment looks pretty valuable.</p>
+        <br>
+        <br>
+        <p>I can get you $8 for it all.</p>
+    </div>
+</div>
+{{ base.navi() }}
+{% endset %}
+
+{% set farm_equip_sell_1 %}
+<div class="row">
+    <div class="col-3">
+        <img src="{{ url_for('static', filename='imgs/hoe.png') }}" alt="hoe">
+    </div>
+    <div class="col">
+        <br>
+        <p>WHAT!</p>
+        <br>
+        <br>
+        <p>I payed at $37 for that seeder, more than $20 for the hoe, and $44 on the plow.</p>
+    </div>
+</div>
 {{ base.navi('navi-page', navi_page='shop-home', id='farm-equip-sold') }}
 {% endset %}
 
-{% set placeholder_sell %}
-<p>placeholder</p>
-{{ base.navi('navi-page', navi_page='shop-home', id='placeholder-sold') }}
+{% set farm_equip_sell_2 %}
+<div class="row">
+    <div class="col-3">
+        <div class="matt" style="position: relative; left: -40px; top: 30px;"></div>
+    </div>
+    <div class="col">
+        <br>
+        <p>Hmmmmmm....</p>
+        <br>
+        <br>
+        <p>How about $12 for it all? And another 40 cents since I really do like you.</p>
+    </div>
+</div>
+{{ base.navi('navi-page', navi_page='shop-home', id='farm-equip-sold') }}
 {% endset %}
-
 
 {{ base.page(intro, hidden=False) }}
 {{ base.page(mattintro) }}
 {{ base.page(shop_home, 'shop-home') }}
-
 
 {{ base.page(wagon_sell, 'wagon-sell') }}
 {{ base.page(wagon_sell_1) }}
 {{ base.page(wagon_sell_2) }}
 
 {{ base.page(farm_equip_sell, 'farm-equip-sell') }}
-
-{{ base.page(placeholder_sell, 'placeholder-sell') }}
+{{ base.page(farm_equip_sell_1) }}
 
 {% endblock %}

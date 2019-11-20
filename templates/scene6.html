@@ -61,7 +61,7 @@
 {% endset %}
 
 {% set end_footer %}
-<form action="{{ url_for('scene7') }}">
+<form action="{{ url_for('scene6') }}" method="POST">
     <p class="opt submit text-center">Continue</p>
 </form>
 {% endset %}
@@ -72,6 +72,6 @@
 {{ trail.tpage(dlg2, trail_class, base.navi()) }}
 {{ trail.tpage(dlg3, trail_class, base.navi()) }}
 {{ trail.tpage(dlg4, trail_class, base.navi()) }}
-{{ trail.tpage(end, trail_class, end_footer) }}
+{{ trail.tpage(end, 'dies', end_footer) }}
 
 {% endblock %}

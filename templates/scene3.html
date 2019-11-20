@@ -13,12 +13,6 @@
 {{ base.navi() }}
 {% endset %}
 
-{% set description %}
-<p>description</p>
-
-{{ base.navi() }}
-{% endset %}
-
 {% set shop %}
 <div class="mx-2">
     <div class="px-5" style="border-top: 5px solid crimson;">
@@ -27,19 +21,19 @@
     <div class="px-5" style="border-top: 5px solid crimson;">
         <div class="row text-center mt-2">
             <div class="col">
-                <img src="{{ url_for('static', filename='imgs/car-placeholder.jpg') }}" width="150px" height="150p"
+                <img src="{{ url_for('static', filename='imgs/cadillac.PNG') }}" width="150px" height="150p"
                      alt="car1">
-                <p class="opt navi navi-next mt-1">Today's Bargain '29 Ford Pickup</p>
+                <p class="opt navi navi-page mt-1" data-navi="sold">Today's Bargain Cadillac</p>
             </div>
             <div class="col">
-                <img src="{{ url_for('static', filename='imgs/car-placeholder.jpg') }}" width="150px" height="150p"
+                <img src="{{ url_for('static', filename='imgs/pontiac.PNG') }}" width="150px" height="150p"
                      alt="car2">
-                <p class="opt navi navi-next mt-1">'36 Pontiac</p>
+                <p class="opt navi navi-page mt-1" data-navi="sold">'36 Pontiac</p>
             </div>
             <div class="col">
-                <img src="{{ url_for('static', filename='imgs/car-placeholder.jpg') }}" width="150px" height="150px"
+                <img src="{{ url_for('static', filename='imgs/hudson.PNG') }}" width="150px" height="150px"
                      alt="car3">
-                <p class="opt navi navi-next mt-1">Hudson Super 6</p>
+                <p class="opt navi navi-page mt-1" data-navi="buy">Hudson Super 6</p>
             </div>
         </div>
     </div>
@@ -48,15 +42,29 @@
 </div>
 {% endset %}
 
-{% set temp %}
-<form action="{{ url_for('scene4') }}" class="text-center mt-auto">
+{% set sold %}
+<br>
+<br>
+<br>
+<p class="pl-5">Sorry this was just sold out!</p>
+
+{{ base.navi('navi-page', navi_page='shop') }}
+{% endset %}
+
+{% set buy %}
+<br>
+<br>
+<br>
+<p class="pl-5">Congratulations! You are the brand new owner of this wonderful Hundson Super 6!</p>
+<form action="{{ url_for('trail') }}" method="post" class="text-center mt-auto">
     <p class="opt submit" id="continue-market">Continue</p>
 </form>
 {% endset %}
 
 {{ base.page(welcome) }}
-{{ base.page(description) }}
-{{ base.page(shop) }}
-{{ base.page(temp) }}
+{{ base.page(shop, id='shop') }}
+
+{{ base.page(sold, id='sold') }}
+{{ base.page(buy, id='buy') }}
 
 {% endblock %}
